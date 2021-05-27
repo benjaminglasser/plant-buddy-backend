@@ -4,5 +4,6 @@ var buddiesCtrl = require('../controllers/buddies')
 
 /* GET users listing. */
 router.get('/', buddiesCtrl.index)
+router.post('/', buddiesCtrl.create)
 
 module.exports = router;

@@ -1,11 +1,18 @@
+var Buddy = require('../models/buddy')
+
 module.exports = {
-    index
+    index,
+    create
 }
 
 function index(req, res) {
-    res.status(200).json([
-        { name: 'Bill', schedule: '9' },
-        { name: 'Susie', schedule: '3' },
-        { name: 'Leslie', schedule: '6' },
-    ])
+    Buddy.find({}, function (err, buddies) {
+        res.status(200).json(buddies)
+    })
+}
+
+function create(req, res) {
+    Buddy.create(req.body, function (err, buddy) {
+        res.status(201).json(buddy)
+    })
 }
